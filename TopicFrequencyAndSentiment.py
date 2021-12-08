@@ -11,18 +11,18 @@ import ast
 # 10 duration
 # 11 consistency-months-commented
 
-topics_categories_grouped = [{'water', 'drink', 'drinking', 'soda', 'sugar', 'sweet', 'snack', 'coffee', 'craving',
-                      'diet', 'beer', 'alcohol', 'eat', 'food', 'meal', 'eating', 'lunch', 'dinner', 'hungry', 'calorie', 'breakfast', 'food', 'diet', 'eating', 'protein', 'carbs', 'veggie', 'recipe', 'cook'}, {'doctor', 'health',
-                                                                                                                                                                                                                   'pain', 'energy', 'surgery'}, {'friend', 'family', 'kid', 'mom',
-                                                                                                                                                                                                                                                  'school', 'husband', 'girlfriend'}, {'calorie', 'deficit', 'exercise', 'tdee', 'cico',
-                                                                                                                                                                                                                                                                                       'counting', 'count', 'mfp', 'cal'}, {'run', 'running', 'walk',
-                                                                                                                                                                                                                                                                                                                            'walking', 'mile', 'gym', 'exercise', 'muscle', 'workout', 'cardio'}, {'lb', 'lost', 'pound',
-                                                                                                                                                                                                                                                                                                                                                                                                   'gained', 'weight', 'starting', 'weight', 'lose', 'loss', 'fat', 'gain', 'bmi', 'height', 'range', 'scale', 'number', 'plateau', 'drop', 'weighing'}, {
-    'hard', 'won', 'easy', 'worry', 'goal', 'hit', 'progress', 'end', 'picture', 'feel', 'close', 'happy', 'set', 'challenge', 'feel', 'feeling', 'eating', 'binge', 'bad', 'stop', 'time', 'control', 'hard', 'stress', 'struggle'}, {'pretty', 'luck', 'understand', 'talk', 'mental',
-                                                                                                                                                                                                                                       'care', 'check', 'great', 'love', 'awesome', 'job', 'amazing', 'congrats', 'hope', 'glad'}, {'day', 'week', 'track', 'maintenance',
-                                                                                                                                                                                                                                                                                                                                    'plan', 'log', 'logging', 'time', 'start', 'habit', 'choice', 'healthy', 'time', 'thought', 'felt', 'wanted', 'started', 'back', 'needed', 'decided', 'found'}, {'fit', 'size', 'clothes', 'big', 'wear', 'buy',
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'pant', 'bought', 'shirt', 'dress', 'store'}, {'today', 'morning', 'night', 'yesterday',
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    'work', 'tomorrow', 'weekend', 'day'}, {'quarantine', 'lockdown', 'covid', 'coronavirus', 'home', 'inside'
+# topics_categories_grouped = [{'water', 'drink', 'drinking', 'soda', 'sugar', 'sweet', 'snack', 'coffee', 'craving',
+#                       'diet', 'beer', 'alcohol', 'eat', 'food', 'meal', 'eating', 'lunch', 'dinner', 'hungry', 'calorie', 'breakfast', 'food', 'diet', 'eating', 'protein', 'carbs', 'veggie', 'recipe', 'cook'}, {'doctor', 'health',
+#                                                                                                                                                                                                                    'pain', 'energy', 'surgery'}, {'friend', 'family', 'kid', 'mom',
+#                                                                                                                                                                                                                                                   'school', 'husband', 'girlfriend'}, {'calorie', 'deficit', 'exercise', 'tdee', 'cico',
+#                                                                                                                                                                                                                                                                                        'counting', 'count', 'mfp', 'cal'}, {'run', 'running', 'walk',
+#                                                                                                                                                                                                                                                                                                                             'walking', 'mile', 'gym', 'exercise', 'muscle', 'workout', 'cardio'}, {'lb', 'lost', 'pound',
+#                                                                                                                                                                                                                                                                                                                                                                                                    'gained', 'weight', 'starting', 'weight', 'lose', 'loss', 'fat', 'gain', 'bmi', 'height', 'range', 'scale', 'number', 'plateau', 'drop', 'weighing'}, {
+#     'hard', 'won', 'easy', 'worry', 'goal', 'hit', 'progress', 'end', 'picture', 'feel', 'close', 'happy', 'set', 'challenge', 'feel', 'feeling', 'eating', 'binge', 'bad', 'stop', 'time', 'control', 'hard', 'stress', 'struggle'}, {'pretty', 'luck', 'understand', 'talk', 'mental',
+#                                                                                                                                                                                                                                        'care', 'check', 'great', 'love', 'awesome', 'job', 'amazing', 'congrats', 'hope', 'glad'}, {'day', 'week', 'track', 'maintenance',
+#                                                                                                                                                                                                                                                                                                                                     'plan', 'log', 'logging', 'time', 'start', 'habit', 'choice', 'healthy', 'time', 'thought', 'felt', 'wanted', 'started', 'back', 'needed', 'decided', 'found'}, {'fit', 'size', 'clothes', 'big', 'wear', 'buy',
+#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      'pant', 'bought', 'shirt', 'dress', 'store'}, {'today', 'morning', 'night', 'yesterday',
+#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'work', 'tomorrow', 'weekend', 'day'}, {'quarantine', 'lockdown', 'covid', 'coronavirus', 'home', 'inside'
 
 # //0-28
 # //29-33
@@ -107,30 +107,30 @@ with open('authors_comments.csv', mode='r') as csv_file:
                         topicCat = 11
                     if topics[index] == '1':
                         try:
-                            topic_seen[index] += 1
-                            sentiment_seen[index] += sentiment
+                            topic_seen[topicCat] += 1
+                            sentiment_seen[topicCat] += sentiment
                         except:
-                            topic_seen[index] = 1
-                            topic_by_month[index] = {}
-                            topic_by_monthYear[index] = {}
+                            topic_seen[topicCat] = 1
+                            topic_by_month[topicCat] = {}
+                            topic_by_monthYear[topicCat] = {}
 
-                            sentiment_seen[index] = sentiment
-                            sentiment_by_month[index] = {}
-                            sentiment_by_monthYear[index] = {}
+                            sentiment_seen[topicCat] = sentiment
+                            sentiment_by_month[topicCat] = {}
+                            sentiment_by_monthYear[topicCat] = {}
 
-                        if month in topic_by_month[index]:
-                            topic_by_month[index][month] += 1
-                            sentiment_by_month[index][month] += sentiment
+                        if month in topic_by_month[topicCat]:
+                            topic_by_month[topicCat][month] += 1
+                            sentiment_by_month[topicCat][month] += sentiment
                         else:
-                            topic_by_month[index][month] = 1
-                            sentiment_by_month[index][month] = sentiment
+                            topic_by_month[topicCat][month] = 1
+                            sentiment_by_month[topicCat][month] = sentiment
 
-                        if monthYear in topic_by_monthYear[index]:
-                            topic_by_monthYear[index][monthYear] += 1
-                            sentiment_by_monthYear[index][monthYear] += sentiment
+                        if monthYear in topic_by_monthYear[topicCat]:
+                            topic_by_monthYear[topicCat][monthYear] += 1
+                            sentiment_by_monthYear[topicCat][monthYear] += sentiment
                         else:
-                            topic_by_monthYear[index][monthYear] = 1
-                            sentiment_by_monthYear[index][monthYear] = sentiment
+                            topic_by_monthYear[topicCat][monthYear] = 1
+                            sentiment_by_monthYear[topicCat][monthYear] = sentiment
 
                 # if author in author_comments:
                 #     author_comments[author] += 1
@@ -157,10 +157,10 @@ with open('authors_comments.csv', mode='r') as csv_file:
     mosyears = ["2015-01", "2015-02", "2015-03", "2015-04", "2015-05", "2015-06", "2015-07", "2015-08", "2015-09", "2015-10", "2015-11", "2015-12", "2016-01", "2016-02", "2016-03", "2016-04", "2016-05", "2016-06", "2016-07", "2016-08", "2016-09", "2016-10", "2016-11", "2016-12", "2017-01", "2017-02", "2017-03", "2017-04", "2017-05", "2017-06", "2017-07", "2017-08", "2017-09", "2017-10", "2017-11", "2017-12", "2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06",
                 "2018-07", "2018-08", "2018-09", "2018-10", "2018-11", "2018-12", "2019-01", "2019-02", "2019-03", "2019-04", "2019-05", "2019-06", "2019-07", "2019-08", "2019-09", "2019-10", "2019-11", "2019-12", "2020-01", "2020-02", "2020-03", "2020-04", "2020-05", "2020-06", "2020-07", "2020-08", "2020-09", "2020-10", "2020-11", "2020-12", "2021-01", "2021-02", "2021-03", "2021-04", "2021-05", "2021-06", "2021-07", "2021-08", "2021-09", "2021-10", "2021-11", "2021-12"]
 
-    fileOps = open("topics_month", "a")
-    fileOpsSent = open("topics_month_sent", "a")
+    fileOps = open("cat_topics_month", "a")
+    fileOpsSent = open("cat_topics_month_sent", "a")
 
-    for i in range(165):
+    for i in range(12):
         str_mos = str(i) + "," + topics_categories[i] + ","
         str_mos_sent = str_mos
         try:
@@ -185,10 +185,10 @@ with open('authors_comments.csv', mode='r') as csv_file:
     fileOps.close()
     fileOpsSent.close()
 
-    yearOps = open("topics_monthYear", "a")
-    yearOpsSent = open("topics_monthYear_sent", "a")
+    yearOps = open("cat_topics_monthYear", "a")
+    yearOpsSent = open("cat_topics_monthYear_sent", "a")
 
-    for i in range(165):
+    for i in range(12):
         str_mosyears = str(i) + "," + topics_categories[i] + ","
         str_mosyears_sent = str_mosyears
         try:
